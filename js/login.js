@@ -56,32 +56,31 @@ function cerrarAlerta() {
 
 }
 function cargarFotoUsuario(user) {
-    const fotoWeb = (user && user.fotoWeb) || "";
-    const fotoApp = (user && user.foto) || "";
+    const fuentes = [
+        (user && user.fotoDataUrl) || "",
+        (user && user.fotoWeb) || "",
+        (user && user.foto) || ""
+    ].filter(Boolean);
 
-    fotoUsuario.dataset.fallback = fotoApp;
-    fotoUsuario.dataset.fallbackTried = "0";
-    fotoUsuario.style.display = "block";
-
-    fotoUsuario.onerror = function () {
-        const fallback = this.dataset.fallback || "";
-        const fallbackTried = this.dataset.fallbackTried === "1";
-
-        if (!fallbackTried && fallback) {
-            this.dataset.fallbackTried = "1";
-            this.src = fallback;
-            return;
-        }
-
-        this.style.display = "none";
-    };
-
-    if (fotoWeb || fotoApp) {
-        fotoUsuario.src = fotoWeb || fotoApp;
-    } else {
+    if (!fuentes.length) {
         fotoUsuario.src = "";
         fotoUsuario.style.display = "none";
+        return;
     }
+
+    let index = 0;
+
+    fotoUsuario.onerror = function () {
+        index++;
+        if (index < fuentes.length) {
+            this.src = fuentes[index];
+        } else {
+            this.style.display = "none";
+        }
+    };
+
+    fotoUsuario.style.display = "block";
+    fotoUsuario.src = fuentes[0];
 }
 
 btnAlertAceptar.addEventListener("click", cerrarAlerta);
@@ -183,6 +182,7 @@ function ocultarVista() {
 
     fotoUsuario.src = "";
     fotoUsuario.style.display = "block";
+    fotoUsuario.onerror = null;
     fotoUsuario.dataset.fallback = "";
     fotoUsuario.dataset.fallbackTried = "0";
 
@@ -190,6 +190,7 @@ function ocultarVista() {
     rolUsuario.textContent = "";
 
 }
+
 
 fotoUsuario.onerror = function () {
     this.style.display = "none";
