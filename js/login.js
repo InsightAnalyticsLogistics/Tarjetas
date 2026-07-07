@@ -106,16 +106,16 @@ if (data.ok && data.found) {
 
     hideLoading();
 
-usuarioValidado = usuario;
-ultimoUsuarioNoExiste = "";
+    usuarioValidado = usuario;
+    ultimoUsuarioNoExiste = "";
 
-nombreUsuario.textContent = data.user.nombre || "Usuario detectado";
-            rolUsuario.textContent = data.user.rol || "";
+    nombreUsuario.textContent = data.user.nombre || "Usuario detectado";
+    rolUsuario.textContent = data.user.rol || "";
 
-            fotoUsuario.src = data.user.foto || "";
-            fotoUsuario.style.display = "block";
+    fotoUsuario.src = data.user.fotoWeb || data.user.foto || "";
+    fotoUsuario.style.display = "block";
 
-            vistaUsuario.classList.remove("oculto");
+    vistaUsuario.classList.remove("oculto");
 
 } else {
 
