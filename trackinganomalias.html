@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracking de anomalías</title>
+  <link rel="stylesheet" href="css/trackinganomalias.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="session-box">
+        <div class="session-user">
+          <div class="session-avatar">
+            <img id="topUserPhoto" src="" alt="Usuario">
+          </div>
+          <div class="session-text">
+            <strong id="topUserName">Usuario</strong>
+            <span id="topUserRole">ROL</span>
+          </div>
+        </div>
+
+        <button type="button" id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="topbar-title">
+        <h1>Tracking de anomalías</h1>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="filters-card">
+        <div class="filters-grid">
+          <div class="field">
+            <label for="filterEstado">Estado</label>
+            <select id="filterEstado">
+              <option value="">Todos</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterZona">Zona</label>
+            <select id="filterZona">
+              <option value="">Todas</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterAsignado">Usuario asignado</label>
+            <select id="filterAsignado">
+              <option value="">Todos</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterSearch">Buscar</label>
+            <input type="text" id="filterSearch" placeholder="Usuario, ubicación, zona...">
+          </div>
+        </div>
+
+        <div class="filters-actions">
+          <button type="button" id="btnNuevaAnomalia" class="primary-btn">Nueva anomalía</button>
+          <button type="button" id="btnBuscar" class="primary-btn">Buscar</button>
+          <button type="button" id="btnLimpiar" class="secondary-btn">Limpiar</button>
+        </div>
+      </section>
+
+<div class="table-head table-head-bar">
+  <div id="trackingSummary" class="tracking-summary">Cargando registros...</div>
+
+  <button type="button" id="btnExportExcel" class="excel-btn hidden" title="Descargar Excel">
+    <span class="excel-btn-icon">X</span>
+    <span>Exportar</span>
+  </button>
+</div>
+
+
+        <div class="table-wrap">
+          <table class="tracking-table">
+<thead>
+  <tr>
+    <th>Estado</th>
+    <th>Fecha registro</th>
+    <th>Usuario registro</th>
+    <th>Zona</th>
+    <th>Ubicación</th>
+    <th>Usuario asignado</th>
+    <th>Fecha planificada</th>
+    <th class="col-actions">Acciones</th>
+  </tr>
+</thead>
+            <tbody id="trackingBody"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination-bar">
+          <button type="button" id="btnPrev" class="secondary-btn">Anterior</button>
+          <span id="pageInfo">Página 1</span>
+          <button type="button" id="btnNext" class="secondary-btn">Siguiente</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-card">
+      <div class="spinner"></div>
+      <p>Cargando registros...</p>
+    </div>
+  </div>
+
+  <script src="js/trackinganomalias.v4.js?v=4"></script>
+</body>
+</html>

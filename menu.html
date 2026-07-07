@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú principal</title>
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="session-box">
+        <div class="session-user">
+          <div class="session-avatar">
+            <img id="topUserPhoto" src="" alt="Usuario">
+          </div>
+
+          <div class="session-text">
+            <strong id="topUserName">Usuario</strong>
+            <span id="topUserRole">Rol</span>
+          </div>
+        </div>
+
+        <button type="button" id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="topbar-title">
+        <h1>Menú principal</h1>
+        <p>Seleccione una opción</p>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="menu-grid">
+        <article class="menu-card" id="cardAnomalias">
+          <img src="img/menu/ANOMALIA.jpg" alt="Tarjeta de anomalía" class="menu-icon">
+          <h2>Tarjeta de anomalías</h2>
+          <p>Registro y gestión de anomalías operativas.</p>
+          <button type="button" class="menu-btn">Ingresar</button>
+        </article>
+
+        <article class="menu-card" id="cardSugerencias">
+          <img src="img/menu/SUGERENCIA.jpg" alt="Tarjeta de sugerencias" class="menu-icon">
+          <h2>Tarjeta de sugerencias</h2>
+          <p>Registro y gestión de oportunidades de mejora.</p>
+          <button type="button" class="menu-btn">Ingresar</button>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>

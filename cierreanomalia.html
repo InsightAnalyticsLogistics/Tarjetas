@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cierre de anomalía</title>
+  <link rel="stylesheet" href="css/cierreanomalia.css">
+</head>
+<body class="page-loading">
+  <body>
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-modal">
+      <div class="loading-spinner"></div>
+      <div id="loadingText" class="loading-text">Cargando Detalle...</div>
+    </div>
+  </div>
+  <div id="pageContent" class="page-shell">
+    <header class="topbar">
+      <div class="session-box">
+        <div class="session-user">
+          <div class="session-avatar">
+            <img id="topUserPhoto" src="" alt="Usuario">
+          </div>
+          <div class="session-text">
+            <strong id="topUserName">Usuario</strong>
+            <span id="topUserRole">Rol</span>
+          </div>
+        </div>
+        <button type="button" id="backBtn" class="secondary-btn">Volver</button>
+        <button type="button" id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="topbar-title">
+        <h1>Cierre de anomalía</h1>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="card">
+        <div class="card-head">
+          <h2>Detalle seleccionado</h2>
+          <p id="modeInfo" class="mode-info"></p>
+        </div>
+
+        <form id="cierreForm" novalidate>
+          <div class="form-grid cols-2">
+            <div class="field">
+              <label for="fechaRegistro">Fecha y hora de registro</label>
+              <input type="text" id="fechaRegistro" readonly>
+            </div>
+            <div class="field">
+              <label for="registradoPor">Registrado por</label>
+              <input type="text" id="registradoPor" readonly>
+            </div>
+            <div class="field">
+              <label for="rol">Rol</label>
+              <input type="text" id="rol" readonly>
+            </div>
+            <div class="field">
+              <label for="area">Área</label>
+              <input type="text" id="area" readonly>
+            </div>
+            <div class="field field-full">
+              <label for="jefeDirecto">Jefe directo</label>
+              <input type="text" id="jefeDirecto" readonly>
+            </div>
+          </div>
+
+          <div class="section-title">Ubicación y clasificación</div>
+          <div class="form-grid cols-2">
+            <div class="field field-full autocomplete-wrap">
+              <label for="ubicacion">Ubicación</label>
+              <input type="text" id="ubicacion" autocomplete="off">
+              <div id="ubicacionSuggestions" class="suggestions hidden"></div>
+            </div>
+
+            <div class="field">
+              <label for="zona">Zona</label>
+              <input type="text" id="zona" readonly>
+            </div>
+
+            <div class="field">
+              <label for="areaZona">Área de zona</label>
+              <input type="text" id="areaZona" readonly>
+            </div>
+
+            <div class="field">
+              <label for="reasonCode">Reason Code</label>
+              <select id="reasonCode">
+                <option value="">Seleccione una opción</option>
+              </select>
+            </div>
+
+            <div class="field field-full">
+              <label for="descripcionReason">Descripción</label>
+              <textarea id="descripcionReason" class="auto-textarea" rows="1" readonly></textarea>
+            </div>
+
+            <div class="field">
+              <label for="tipoReason">Tipo</label>
+              <input type="text" id="tipoReason" readonly>
+            </div>
+
+            <div class="field">
+              <label for="fuente">Fuente</label>
+              <input type="text" id="fuente" readonly>
+            </div>
+          </div>
+
+          <div class="section-title">Detalle y evidencia</div>
+          <div class="field">
+            <label for="descripcionAnomalia">Descripción de la anomalía</label>
+            <textarea id="descripcionAnomalia" rows="4" maxlength="50"></textarea>
+            <div class="counter"><span id="descripcionCount">0</span>/50</div>
+          </div>
+
+          <div class="photo-grid">
+            <div class="field">
+              <label>Foto inicial</label>
+              <div id="fotoInicialBox" class="photo-preview hidden">
+                <img id="fotoInicialPreview" src="" alt="Foto inicial">
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Foto cierre</label>
+              <div class="photo-actions">
+                <input type="file" id="cameraInput" accept="image/*" capture="environment" class="hidden">
+                <input type="file" id="galleryInput" accept="image/*" class="hidden">
+                <button type="button" id="cameraBtn" class="secondary-btn">Tomar foto</button>
+                <button type="button" id="galleryBtn" class="secondary-btn">Abrir galería</button>
+              </div>
+
+              <div id="photoPreviewBox" class="photo-preview hidden">
+                <img id="photoPreview" src="" alt="Foto cierre">
+                <button type="button" id="removePhotoBtn" class="link-btn">Quitar foto</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-title">Asignación automática</div>
+          <div class="form-grid cols-2">
+            <div class="field">
+              <label for="responsableZona">Responsable de zona</label>
+              <input type="text" id="responsableZona" readonly>
+            </div>
+            <div class="field">
+              <label for="areaResponsable">Área del responsable</label>
+              <input type="text" id="areaResponsable" readonly>
+            </div>
+            <div class="field">
+              <label for="estado">Estado actual</label>
+              <input type="text" id="estado" readonly>
+            </div>
+            <div class="field">
+              <label for="fechaPlanificada">Fecha planificada</label>
+              <input type="text" id="fechaPlanificada" readonly>
+            </div>
+          </div>
+
+          <div id="formMessage" class="form-message"></div>
+
+          <div class="submit-row">
+            <button type="submit" id="submitBtn" class="primary-btn">Cerrar anomalía</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/cierreanomalia.js"></script>
+</body>
+</html>

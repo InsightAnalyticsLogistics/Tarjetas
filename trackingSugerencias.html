@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracking de Sugerencias</title>
+  <link rel="stylesheet" href="css/trackingSugerencias.css">
+</head>
+<body>
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-modal">
+      <div class="loading-spinner"></div>
+      <div id="loadingText" class="loading-text">Cargando Registros...</div>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="session-box">
+        <div class="session-user">
+          <div class="session-avatar">
+            <img id="topUserPhoto" src="" alt="Usuario">
+          </div>
+          <div class="session-text">
+            <strong id="topUserName">Usuario</strong>
+            <span id="topUserRole">Rol</span>
+          </div>
+        </div>
+        <button type="button" id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="topbar-title">
+        <h1>Tracking de Sugerencias</h1>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="card filters-card">
+        <div class="filters-grid">
+          <div class="field">
+            <label for="filterEstado">Estado</label>
+            <select id="filterEstado">
+              <option value="">Todos</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterArea">Área</label>
+            <select id="filterArea">
+              <option value="">Todas</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterFuente">Fuente</label>
+            <select id="filterFuente">
+              <option value="">Todas</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="filterResponsable">Responsable</label>
+            <select id="filterResponsable">
+              <option value="">Todos</option>
+            </select>
+          </div>
+
+          <div class="field field-search">
+            <label for="filterSearch">Buscar</label>
+            <input type="text" id="filterSearch" placeholder="Proceso, responsable, categoría...">
+          </div>
+        </div>
+
+        <div class="filters-actions">
+          <button type="button" id="btnNuevaSugerencia" class="primary-btn">Nueva Sugerencia</button>
+          <button type="button" id="btnBuscar" class="primary-btn">Buscar</button>
+          <button type="button" id="btnLimpiar" class="secondary-btn">Limpiar</button>
+        </div>
+      </section>
+
+      <section class="card table-card">
+<div class="table-head table-head-bar">
+  <div>
+    <h2>Registros</h2>
+    <p id="trackingSummary">Cargando registros...</p>
+  </div>
+
+  <button type="button" id="btnExportExcel" class="excel-btn hidden" title="Descargar Excel">
+    <span class="excel-btn-icon">X</span>
+    <span>Exportar</span>
+  </button>
+</div>
+
+        <div class="table-wrap">
+          <table class="tracking-table">
+            <thead>
+              <tr>
+                <th>Estado</th>
+                <th>Fecha registro</th>
+                <th>Proceso</th>
+                <th>Área</th>
+                <th>Responsable</th>
+                <th>Categorías</th>
+                <th>Fuente</th>
+                <th class="col-actions">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="trackingBody">
+              <tr>
+                <td colspan="8">Cargando...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <button type="button" id="btnPrev" class="secondary-btn">Anterior</button>
+          <span id="pageInfo">Página 1 de 1</span>
+          <button type="button" id="btnNext" class="secondary-btn">Siguiente</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/trackingSugerencias.js"></script>
+</body>
+</html>

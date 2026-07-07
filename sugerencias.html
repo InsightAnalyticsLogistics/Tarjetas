@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta de Sugerencias</title>
+  <link rel="stylesheet" href="css/sugerencias.css">
+</head>
+<body>
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-modal">
+      <div class="loading-spinner"></div>
+      <div id="loadingText" class="loading-text">Cargando Sugerencia...</div>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="session-box">
+        <div class="session-user">
+          <div class="session-avatar">
+            <img id="topUserPhoto" src="" alt="Usuario">
+          </div>
+          <div class="session-text">
+            <strong id="topUserName">Usuario</strong>
+            <span id="topUserRole"></span>
+          </div>
+        </div>
+
+        <button type="button" id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="topbar-title">
+        <h1>Tarjeta de Sugerencias</h1>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="card">
+        <div class="card-head">
+          <h2>Registro de Sugerencia</h2>
+        </div>
+
+        <div class="reporter-card">
+          <div class="reporter-photo-wrap">
+            <img id="reporterPhoto" src="" alt="Foto del usuario">
+          </div>
+          <div class="reporter-info">
+            <strong id="reporterName">Usuario</strong>
+            <span id="reporterArea">Área</span>
+          </div>
+        </div>
+
+        <form id="sugerenciaForm" novalidate>
+          <div class="section-title">Datos generales</div>
+
+          <div class="form-grid cols-2">
+            <div class="field">
+              <label for="fechaReporte">Fecha de reporte</label>
+              <input type="text" id="fechaReporte" readonly>
+            </div>
+
+            <div class="field">
+              <label for="semana">Semana</label>
+              <input type="text" id="semana" readonly>
+            </div>
+
+            <div class="field">
+              <label for="detectadoPor">Detectado por</label>
+              <input type="text" id="detectadoPor" readonly>
+            </div>
+
+            <div class="field">
+              <label for="rol">Rol</label>
+              <input type="text" id="rol" readonly>
+            </div>
+
+            <div class="field">
+              <label for="area">Área</label>
+              <input type="text" id="area" readonly>
+            </div>
+
+            <div class="field">
+              <label for="jefeDirecto">Jefe directo</label>
+              <input type="text" id="jefeDirecto" readonly>
+            </div>
+
+            <div class="field field-full">
+              <label for="proceso">Proceso</label>
+              <input type="text" id="proceso" maxlength="100" placeholder="Ingrese el proceso">
+            </div>
+
+            <div class="field field-full">
+              <label for="fuente">Fuentes</label>
+              <select id="fuente">
+                <option value="">Seleccione una opción</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section-title">Equipo</div>
+
+          <div class="field">
+            <label for="colaboradorSelect">Seleccione un personal</label>
+            <div class="team-selector-row">
+              <select id="colaboradorSelect">
+                <option value="">Seleccione un personal</option>
+              </select>
+              <button type="button" id="addColaboradorBtn" class="secondary-btn">Agregar</button>
+            </div>
+            <small class="field-help">Puede agregar hasta 6 colaboradores.</small>
+          </div>
+
+          <div id="selectedTeam" class="selected-team"></div>
+
+          <div class="section-title">Detalle de la sugerencia</div>
+
+          <div class="field">
+            <label for="descripcionSugerencia">Descripción de sugerencia</label>
+            <textarea id="descripcionSugerencia" rows="4" maxlength="100" placeholder="Ingrese la descripción de la sugerencia"></textarea>
+            <div class="counter"><span id="descripcionCount">0</span>/100</div>
+          </div>
+
+          <div class="field">
+            <label for="beneficios">Beneficios</label>
+            <textarea id="beneficios" rows="4" maxlength="100" placeholder="Ingrese los beneficios"></textarea>
+            <div class="counter"><span id="beneficiosCount">0</span>/100</div>
+          </div>
+
+          <div class="section-title">Categorías</div>
+
+          <div class="checkbox-grid">
+            <label class="checkbox-card">
+              <input type="checkbox" class="categoria-checkbox" value="EHS">
+              <span>EHS</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" class="categoria-checkbox" value="Productividad">
+              <span>Productividad</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" class="categoria-checkbox" value="CALIDAD(Perdida, Cliente)">
+              <span>CALIDAD(Perdida, Cliente)</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" class="categoria-checkbox" value="5S">
+              <span>5S</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" class="categoria-checkbox" value="Material Auxiliar">
+              <span>Material Auxiliar</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" class="categoria-checkbox" value="Estandarización">
+              <span>Estandarización</span>
+            </label>
+          </div>
+
+          <div id="formMessage" class="form-message"></div>
+
+          <div class="submit-row">
+            <button type="submit" id="submitBtn" class="primary-btn">Registrar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/sugerencias.js"></script>
+</body>
+</html>

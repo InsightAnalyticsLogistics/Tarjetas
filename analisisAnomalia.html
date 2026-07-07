@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análisis de Anomalía</title>
+  <link rel="stylesheet" href="css/analisisAnomalia.css">
+</head>
+<body>
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-modal">
+      <div class="loading-spinner"></div>
+      <div id="loadingText" class="loading-text">Cargando Detalle...</div>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="session-box">
+        <div class="session-user">
+          <div class="session-avatar">
+            <img id="topUserPhoto" src="" alt="Usuario">
+          </div>
+          <div class="session-text">
+            <strong id="topUserName">Usuario</strong>
+            <span id="topUserRole">Rol</span>
+          </div>
+        </div>
+        <button type="button" id="backBtn" class="secondary-btn">Volver</button>
+        <button type="button" id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="topbar-title">
+        <h1>Análisis de Anomalía</h1>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="card">
+        <div class="card-head">
+          <h2>Detalle del registro</h2>
+        </div>
+
+        <div class="section-title">Datos del registro</div>
+        <div class="form-grid cols-2">
+          <div class="field">
+            <label>Estado actual</label>
+            <input type="text" id="estadoActual" readonly>
+          </div>
+          <div class="field">
+            <label>Fecha de registro</label>
+            <input type="text" id="fechaRegistro" readonly>
+          </div>
+          <div class="field">
+            <label>Registrado por</label>
+            <input type="text" id="registradoPor" readonly>
+          </div>
+          <div class="field">
+            <label>Rol</label>
+            <input type="text" id="rolRegistrante" readonly>
+          </div>
+          <div class="field">
+            <label>Área</label>
+            <input type="text" id="areaRegistrante" readonly>
+          </div>
+          <div class="field">
+            <label>Jefe directo</label>
+            <input type="text" id="jefeRegistrante" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Ubicación</label>
+            <input type="text" id="ubicacion" readonly>
+          </div>
+          <div class="field">
+            <label>Zona</label>
+            <input type="text" id="zona" readonly>
+          </div>
+          <div class="field">
+            <label>Área de zona</label>
+            <input type="text" id="areaZona" readonly>
+          </div>
+          <div class="field">
+            <label>Reason Code</label>
+            <input type="text" id="reasonCode" readonly>
+          </div>
+          <div class="field">
+            <label>Tipo</label>
+            <input type="text" id="tipoReason" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Descripción del Reason</label>
+            <input type="text" id="descripcionReason" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Descripción de la anomalía</label>
+            <textarea id="descripcionAnomalia" rows="3" readonly></textarea>
+          </div>
+          <div class="field field-full">
+            <label>Responsable de zona</label>
+            <input type="text" id="responsableZona" readonly>
+          </div>
+
+          <div class="field field-full">
+            <label>Foto inicial</label>
+            <div id="fotoInicialBox" class="photo-preview hidden">
+              <img id="fotoInicialPreview" src="" alt="Foto inicial">
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">Análisis de anomalía</div>
+
+        <form id="analisisForm" novalidate>
+          <div class="form-grid cols-2">
+            <div class="field">
+              <label for="areaResponsable">Área del responsable</label>
+              <select id="areaResponsable">
+                <option value="">Seleccione un área</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="nombreResponsable">Responsable de anomalía</label>
+              <select id="nombreResponsable">
+                <option value="">Seleccione un responsable</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="responsableApoyo">Responsable de apoyo</label>
+              <select id="responsableApoyo">
+                <option value="">Seleccione (opcional)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="empresaResponsable">Empresa responsable</label>
+              <select id="empresaResponsable">
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="fechaPlan">Fecha planificada</label>
+              <input type="date" id="fechaPlan">
+            </div>
+
+            <div class="field">
+              <label for="fechaCierreInput">Fecha de cierre</label>
+              <input type="date" id="fechaCierreInput">
+            </div>
+
+            <div class="field">
+              <label for="fechaElevacion">Fecha de elevación</label>
+              <input type="date" id="fechaElevacion">
+            </div>
+
+            <div class="field field-full">
+              <label for="elevado">Elevado</label>
+              <textarea id="elevado" rows="2" maxlength="50" placeholder="Entre 5 y 50 caracteres"></textarea>
+              <div class="counter"><span id="elevadoCount">0</span>/50</div>
+            </div>
+
+            <div class="field">
+              <label for="fechaCancelacion">Fecha de cancelación</label>
+              <input type="date" id="fechaCancelacion">
+            </div>
+
+            <div class="field field-full">
+              <label for="motivo">Motivo</label>
+              <textarea id="motivo" rows="2" maxlength="50" placeholder="Entre 5 y 50 caracteres"></textarea>
+              <div class="counter"><span id="motivoCount">0</span>/50</div>
+            </div>
+          </div>
+
+          <div id="formMessage" class="form-message"></div>
+
+          <div class="submit-row">
+            <button type="submit" id="submitBtn" class="primary-btn">Actualizar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/analisisAnomalia.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análisis de Sugerencia</title>
+  <link rel="stylesheet" href="css/analisisSugerencia.css">
+</head>
+<body>
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-modal">
+      <div class="loading-spinner"></div>
+      <div id="loadingText" class="loading-text">Cargando Detalle...</div>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="session-box">
+        <div class="session-user">
+          <div class="session-avatar">
+            <img id="topUserPhoto" src="" alt="Usuario">
+          </div>
+          <div class="session-text">
+            <strong id="topUserName">Usuario</strong>
+            <span id="topUserRole">Rol</span>
+          </div>
+        </div>
+        <button type="button" id="backBtn" class="secondary-btn">Volver</button>
+        <button type="button" id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+      </div>
+
+      <div class="topbar-title">
+        <h1>Análisis de Sugerencia</h1>
+      </div>
+    </header>
+
+    <main class="content-wrap">
+      <section class="card">
+        <div class="card-head">
+          <h2>Detalle del registro</h2>
+        </div>
+
+        <div class="section-title">Datos del registro</div>
+        <div class="form-grid cols-2">
+          <div class="field">
+            <label>Estado actual</label>
+            <input type="text" id="estadoActual" readonly>
+          </div>
+          <div class="field">
+            <label>Fecha de registro</label>
+            <input type="text" id="fechaRegistro" readonly>
+          </div>
+          <div class="field">
+            <label>Detectado por</label>
+            <input type="text" id="detectadoPor" readonly>
+          </div>
+          <div class="field">
+            <label>Rol</label>
+            <input type="text" id="rolDetectado" readonly>
+          </div>
+          <div class="field">
+            <label>Área</label>
+            <input type="text" id="areaDetectado" readonly>
+          </div>
+          <div class="field">
+            <label>Jefe directo</label>
+            <input type="text" id="jefeDetectado" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Proceso</label>
+            <input type="text" id="proceso" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Fuente</label>
+            <input type="text" id="fuente" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Equipo</label>
+            <input type="text" id="equipo" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Categorías</label>
+            <input type="text" id="categorias" readonly>
+          </div>
+          <div class="field field-full">
+            <label>Descripción de la sugerencia</label>
+            <textarea id="descripcion" rows="3" readonly></textarea>
+          </div>
+          <div class="field field-full">
+            <label>Beneficios</label>
+            <textarea id="beneficios" rows="3" readonly></textarea>
+          </div>
+        </div>
+
+        <div class="section-title">Análisis de la sugerencia</div>
+
+        <form id="analisisForm" novalidate>
+          <div class="form-grid cols-2">
+            <div class="field">
+              <label for="areaResponsable">Área responsable</label>
+              <select id="areaResponsable">
+                <option value="">Seleccione un área</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="nombreResponsable">Nombre del responsable</label>
+              <select id="nombreResponsable">
+                <option value="">Seleccione un responsable</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="responsableApoyo">Responsable de apoyo</label>
+              <select id="responsableApoyo">
+                <option value="">Seleccione (opcional)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="fechaPlan">Fecha planificada</label>
+              <input type="date" id="fechaPlan">
+            </div>
+
+            <div class="field">
+              <label for="fechaCierreInput">Fecha de cierre</label>
+              <input type="date" id="fechaCierreInput">
+            </div>
+
+            <div class="field field-full">
+              <label for="comentarioAdicional">Comentario adicional</label>
+              <textarea id="comentarioAdicional" rows="2" maxlength="50" placeholder="Entre 5 y 50 caracteres"></textarea>
+              <div class="counter"><span id="comentarioAdicionalCount">0</span>/50</div>
+            </div>
+
+            <div class="field">
+              <label for="fechaCancelacion">Fecha de cancelación</label>
+              <input type="date" id="fechaCancelacion">
+            </div>
+
+            <div class="field field-full">
+              <label for="comentarioCancelacion">Comentario de cancelación</label>
+              <textarea id="comentarioCancelacion" rows="2" maxlength="50" placeholder="Entre 5 y 50 caracteres"></textarea>
+              <div class="counter"><span id="comentarioCancelacionCount">0</span>/50</div>
+            </div>
+
+            <div class="field">
+              <label for="reconocido">Reconocido</label>
+              <select id="reconocido">
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="impacto">Impacto</label>
+              <select id="impacto">
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+
+            <div class="field field-full">
+              <label for="planAccion">Plan de acción</label>
+              <textarea id="planAccion" rows="3" placeholder="Describa el plan de acción"></textarea>
+            </div>
+          </div>
+
+          <div id="formMessage" class="form-message"></div>
+
+          <div class="submit-row">
+            <button type="submit" id="submitBtn" class="primary-btn">Actualizar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/analisisSugerencia.js"></script>
+</body>
+</html>
