@@ -55,6 +55,34 @@ function cerrarAlerta() {
     usuarioInput.select();
 
 }
+function cargarFotoUsuario(user) {
+    const fotoWeb = (user && user.fotoWeb) || "";
+    const fotoApp = (user && user.foto) || "";
+
+    fotoUsuario.dataset.fallback = fotoApp;
+    fotoUsuario.dataset.fallbackTried = "0";
+    fotoUsuario.style.display = "block";
+
+    fotoUsuario.onerror = function () {
+        const fallback = this.dataset.fallback || "";
+        const fallbackTried = this.dataset.fallbackTried === "1";
+
+        if (!fallbackTried && fallback) {
+            this.dataset.fallbackTried = "1";
+            this.src = fallback;
+            return;
+        }
+
+        this.style.display = "none";
+    };
+
+    if (fotoWeb || fotoApp) {
+        fotoUsuario.src = fotoWeb || fotoApp;
+    } else {
+        fotoUsuario.src = "";
+        fotoUsuario.style.display = "none";
+    }
+}
 
 btnAlertAceptar.addEventListener("click", cerrarAlerta);
 usuarioInput.addEventListener("blur", async function () {
@@ -112,8 +140,7 @@ if (data.ok && data.found) {
     nombreUsuario.textContent = data.user.nombre || "Usuario detectado";
     rolUsuario.textContent = data.user.rol || "";
 
-    fotoUsuario.src = data.user.fotoWeb || data.user.foto || "";
-    fotoUsuario.style.display = "block";
+cargarFotoUsuario(data.user);
 
     vistaUsuario.classList.remove("oculto");
 
@@ -156,6 +183,8 @@ function ocultarVista() {
 
     fotoUsuario.src = "";
     fotoUsuario.style.display = "block";
+    fotoUsuario.dataset.fallback = "";
+    fotoUsuario.dataset.fallbackTried = "0";
 
     nombreUsuario.textContent = "Usuario detectado";
     rolUsuario.textContent = "";
